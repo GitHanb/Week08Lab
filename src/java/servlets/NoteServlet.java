@@ -1,11 +1,12 @@
 package servlets;
 
 import businesslogic.NoteService;
-import domainmodel.Note;
+import domainmodel.Notes;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -24,16 +25,16 @@ public class NoteServlet extends HttpServlet {
         if (action != null && action.equals("view")) {
             String selectedNoteId = request.getParameter("selectedNoteId");
             try {
-                Note note = us.get(Integer.parseInt(selectedNoteId));
+                Notes note = us.get(Integer.parseInt(selectedNoteId));
                 request.setAttribute("selectedNote", note);
             } catch (Exception ex) {
                 Logger.getLogger(NoteServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         
-        ArrayList<Note> notes = null;        
+        List<Notes> notes = null;        
         try {
-            notes = (ArrayList<Note>) us.getAll();
+            notes = us.getAll();
         } catch (Exception ex) {
             Logger.getLogger(NoteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -55,9 +56,9 @@ public class NoteServlet extends HttpServlet {
         try {
             if (action.equals("delete")) {
                 String selectedNoteId = request.getParameter("selectedNoteId");
-                us.delete(Long.parseLong(selectedNoteId));
+                us.delete(Integer.parseInt(selectedNoteId));
             } else if (action.equals("edit")) {
-                Note note = new Note(Integer.parseInt(noteId), contents);
+                Notes note = new Notes(Integer.parseInt(noteId), contents);
                 
                 us.update(note.getNoteId(), note.getContents());
             } else if (action.equals("add")) {
@@ -67,9 +68,9 @@ public class NoteServlet extends HttpServlet {
             request.setAttribute("errorMessage", "Whoops.  Could not perform that action.");
         }
         
-        ArrayList<Note> notes = null;
+        List<Notes> notes = null;
         try {
-            notes = (ArrayList<Note>) us.getAll();
+            notes = us.getAll();
         } catch (Exception ex) {
             Logger.getLogger(NoteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -39,6 +39,7 @@
                 </tr>
             </c:forEach>
         </table>
+        
         <c:if test="${selectedNote == null}">
             <h3>Add Note</h3>
             <form action="notes" method="POST">
@@ -47,6 +48,7 @@
                 <input type="submit" value="Save">
             </form>
         </c:if>
+            
         <c:if test="${selectedNote != null}">
             <h3>Edit Note</h3>
             <form action="notes" method="POST">

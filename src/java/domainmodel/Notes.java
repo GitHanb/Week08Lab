@@ -25,15 +25,15 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Administrator
  */
 @Entity
-@Table(name = "notes")
+@Table(name = "Notes")
 @XmlRootElement
 @NamedQueries(
-{
-    @NamedQuery(name = "Notes.findAll", query = "SELECT n FROM Notes n")
-    , @NamedQuery(name = "Notes.findByNoteId", query = "SELECT n FROM Notes n WHERE n.noteId = :noteId")
-    , @NamedQuery(name = "Notes.findByDateCreated", query = "SELECT n FROM Notes n WHERE n.dateCreated = :dateCreated")
-    , @NamedQuery(name = "Notes.findByContents", query = "SELECT n FROM Notes n WHERE n.contents = :contents")
-})
+        {
+            @NamedQuery(name = "Notes.findAll", query = "SELECT n FROM Notes n")
+            , @NamedQuery(name = "Notes.findByNoteId", query = "SELECT n FROM Notes n WHERE n.noteId = :noteId")
+            , @NamedQuery(name = "Notes.findByDateCreated", query = "SELECT n FROM Notes n WHERE n.dateCreated = :dateCreated")
+            , @NamedQuery(name = "Notes.findByContents", query = "SELECT n FROM Notes n WHERE n.contents = :contents")
+        })
 public class Notes implements Serializable
 {
 
@@ -55,19 +55,19 @@ public class Notes implements Serializable
     {
     }
 
-        public Notes(String contents)
+    public Notes(String contents)
     {
         this.dateCreated = new Date();
         this.contents = contents;
     }
-    
+
     public Notes(int noteId, String contents)
     {
         this.noteId = noteId;
         this.dateCreated = new Date();
         this.contents = contents;
     }
-    
+
     public Notes(int noteId, java.util.Date dateCreated, String contents)
     {
         this.noteId = noteId;
@@ -134,5 +134,5 @@ public class Notes implements Serializable
     {
         return "domainmodel.Notes[ noteId=" + noteId + " ]";
     }
-    
+
 }

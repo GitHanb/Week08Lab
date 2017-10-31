@@ -4,8 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Manage Users</title>
-        <link rel="stylesheet" href="<c:url value='styles/notes.css' />" />
+        <title>Manage Notes</title>
     </head>
     <body>
         <h1>Manage Notes</h1>

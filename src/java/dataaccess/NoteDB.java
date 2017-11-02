@@ -10,15 +10,6 @@ import javax.persistence.EntityTransaction;
 public class NoteDB
 {
 
-    private static java.sql.Date convertUtilToSql(java.util.Date uDate)
-    {
-
-        java.sql.Date sDate = new java.sql.Date(uDate.getTime());
-
-        return sDate;
-
-    }
-
     public int insert(Notes note) throws NotesDBException
     {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -81,13 +72,6 @@ public class NoteDB
         }
     }
 
-    /**
-     * Get a single user by their username.
-     *
-     * @param username The unique username.
-     * @return A User object if found, null otherwise.
-     * @throws NotesDBException
-     */
     public Notes getNote(int noteId) throws NotesDBException
     {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
